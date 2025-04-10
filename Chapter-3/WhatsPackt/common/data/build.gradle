@@ -2,11 +2,12 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
     namespace 'com.packt.data'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         minSdk 28
@@ -38,9 +39,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.8.0'
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
-    implementation "androidx.room:room-runtime:2.4.3"
-    kapt "androidx.room:room-compiler:2.4.3"
-    implementation "androidx.room:room-ktx:2.4.3"
+    implementation "androidx.room:room-runtime:2.7.0"
+    kapt "androidx.room:room-compiler:2.7.0"
+    implementation "androidx.room:room-ktx:2.7.0"
 
     testImplementation "androidx.room:room-testing:2.4.3"
 
@@ -48,8 +49,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "com.google.dagger:hilt-android:2.51.1"
+    kapt "com.google.dagger:hilt-compiler:2.51.1"
     implementation project(path: ':common:framework')
 
     testImplementation 'junit:junit:4.13.2'

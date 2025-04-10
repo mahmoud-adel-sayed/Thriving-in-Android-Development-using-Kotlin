@@ -13,14 +13,9 @@ interface ConversationDao {
     @Query("SELECT * FROM conversations ORDER BY last_message_time DESC")
     fun getAllConversations(): Flow<List<Conversation>>
 
-
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertConversation(conversation: Conversation): Long
 
-
-
     @Delete
     suspend fun deleteConversation(conversation: Conversation)
-
 }

@@ -3,11 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    id "org.jetbrains.kotlin.plugin.compose" version "2.1.0"
 }
 
 android {
     namespace 'com.packt.whatspackt'
-    compileSdk 33
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.packt.whatspackt"
@@ -41,7 +42,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.4'
+        kotlinCompilerExtensionVersion '1.5.13'
     }
     packagingOptions {
         resources {
@@ -76,9 +77,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
 
-    implementation "com.google.dagger:hilt-android:2.44"
-    implementation "com.google.dagger:hilt-work:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "com.google.dagger:hilt-android:2.51.1"
+    //implementation "com.google.dagger:hilt-work:2.51.1"
+    kapt "com.google.dagger:hilt-compiler:2.51.1"
 
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
 
@@ -97,4 +98,13 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
+
+hilt {
+    enableAggregatingTask = true
+}
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
+}
